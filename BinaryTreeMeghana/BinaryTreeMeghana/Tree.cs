@@ -109,44 +109,6 @@ namespace BinaryTreeMeghana
             return Find(value).Parent;
         }
 
-        //public void FindParent(T value)
-        //{
-        //    bool found = false;
-        //    Node<T> parent = Head;
-        //    if(parent.Value.CompareTo(value) == 0)
-        //    {
-
-        //    }
-        //    do
-        //    {
-        //        if(value.CompareTo(parent.Value) > 0)
-        //        {
-        //            if(parent.Right.Value.CompareTo(value) == 0)
-        //            {
-        //                found = true;
-        //            }
-        //            else
-        //            {
-        //                parent = parent.Right;
-
-        //            }
-        //        }
-        //        else if(value.CompareTo(parent.Value) < 0)
-        //        {
-        //            if(parent.Left.Value.CompareTo(value) == 0)
-        //            {
-        //                found = true;
-        //            }
-        //            else
-        //            {
-        //                parent = parent.Left;
-        //            }
-        //        }
-
-
-        //    } while (!found);
-
-        //}
 
         public void Delete(T value)
         {
@@ -192,6 +154,47 @@ namespace BinaryTreeMeghana
                 } while (!find);
 
             }
+        }
+
+        public Node<T> Minimum()
+        {
+            Node<T> temp = Head;
+            bool found = false;
+            do
+            {
+                temp = temp.Left;
+                if (temp.Left == null)
+                {
+                    found = true;
+                }
+
+            } while (!found);
+            return temp;
+
+        }
+
+
+        public Node<T> Maximum()
+        {
+            Node<T> temp = Head;
+            bool found = false;
+            do
+            {
+                temp = temp.Right;
+                if (temp.Right == null)
+                {
+                    found = true;
+                }
+
+            } while (!found);
+            return temp;
+
+        }
+        //Finish dis stupid thingy
+        public void InOrderTraverse()
+        {
+            Node<T> temp = Head;
+
         }
 
     }
