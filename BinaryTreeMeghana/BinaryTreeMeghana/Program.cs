@@ -21,7 +21,9 @@ namespace BinaryTreeMeghana
             tree.Add(7);
 
 
-            tree.InOrderTraverseRecursive(tree.Head);
+            //tree.InOrderTraverse(tree.Head);
+            //tree.PreOrderTraverse(tree.Head);
+            tree.PostOrderTraverse(tree.Head);
 
             Console.ReadKey();
 

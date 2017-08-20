@@ -190,74 +190,73 @@ namespace BinaryTreeMeghana
             return temp;
 
         }
-        //Finish dis stupid thingy
-        //public void InOrderTraverse()
-        //{
-        //    Node<T> temp = Head;
-        //    bool finished = false;
-        //    do
-        //    {
-        //        while (temp.Left != null)
-        //        {
-        //            temp = temp.Left;
-        //        }
-        //        Console.WriteLine("{0}", temp.Value);
 
-        //        if(temp.Right != null)
-        //        {
-        //            temp = temp.Right;
-        //            while (temp.Left != null)
-        //            {
-        //                temp = temp.Left;
-        //                if (temp.Left == null)
-        //                {
-        //                    Console.Write("{0}", temp.Value);
-        //                }
-        //            }
-        //        }
-        //        else if(temp.Right == null)
-        //        {
-        //            temp = temp.Parent.Right;
-        //            while (temp.Left != null)
-        //            {
-        //                temp = temp.Left;
-        //                if (temp.Left == null)
-        //                {
-        //                    Console.Write("{0}", temp.Value);
-        //                }
-        //            }
+        //1. Travel all the way to the left
+        //2. check if temp has left child, if not, print
+        //3. if temp has right child, go right, then traverse all the way to the left
+        //4. if temp doesn't have right child, go back to parent, check if parent has right child          
 
-        //        }
-
-        //    } while (!finished);
-
-
-           
-            //1. Travel all the way to the left
-            //2. check if temp has left child, if not, print
-            //3. if temp has right child, go right, then traverse all the way to the left
-            //4. if temp doesn't have right child, go back to parent, check if parent has right child
-            
-
-        //}
-
-        public void InOrderTraverseRecursive(Node<T> node)
+        public void InOrderTraverse(Node<T> node)
         {
             Node<T> temp = node;
-            if(node != null)
+            if (node != null)
             {
                 if (temp.Left != null)
                 {
-                    InOrderTraverseRecursive(temp.Left);
+                    InOrderTraverse(temp.Left);
                 }
                 Console.Write("{0}, ", temp.Value);
-                if(temp.Right != null)
+                if (temp.Right != null)
                 {
                     //temp = temp.Right;
-                    InOrderTraverseRecursive(temp.Right);
+                    InOrderTraverse(temp.Right);
                 }
             }
 
+        }
+
+        //travel left & print each value until you can't go left anymore
+        //check if you can go right, if you can, go right and print each value until you can't go right anymore
+        //if node has no children, go back to parent
+
+        public void PreOrderTraverse(Node<T> node)
+        {
+            Node<T> temp = node;
+            if (node != null)
+            {
+                Console.Write("{0}, ", temp.Value);
+                if (temp.Left != null)
+                {
+                    PreOrderTraverse(temp.Left);
+                }
+                if (temp.Right != null)
+                {
+                    PreOrderTraverse(temp.Right);
+                }
+
+            }
+
+        }
+
+        //travel left until you find node with no children, print
+        //
+
+        public void PostOrderTraverse(Node<T> node)
+        {
+            Node<T> temp = node;
+            if (node != null)
+            {
+                if(temp.Left != null)
+                {
+                    PostOrderTraverse(temp.Left);
+
+                    if (temp.Right != null)
+                    {
+                        PostOrderTraverse(temp.Right);
+                    }
+                }
+                Console.Write("{0}, ", temp.Value);
+            }
         }
     }
 }
